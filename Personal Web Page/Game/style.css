@@ -1,0 +1,155 @@
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #e9eef3;
+  --surface: #ffffff;
+  --ink: #12213a;
+  --muted: #4a5a73;
+  --line: #c3cfdc;
+  --accent: #d4452e;
+  --on-accent: #ffffff;
+  --focus: #12213a;
+  --font-head: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+:root[data-theme="dark"] {
+  --bg: #101a2c;
+  --surface: #182540;
+  --ink: #e8eef8;
+  --muted: #a9b7cd;
+  --line: #2c3d5e;
+  --accent: #ff8a70;
+  --on-accent: #101a2c;
+  --focus: #e8eef8;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.skip { position: absolute; left: -999px; top: 0; background: var(--surface); padding: .5rem 1rem; }
+.skip:focus { left: 1rem; top: 1rem; z-index: 10; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+/* ---------- Header ---------- */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem clamp(1.25rem, 5vw, 4rem);
+}
+.back {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: .35rem 1rem;
+}
+.back:hover { border-color: var(--ink); }
+.theme-toggle {
+  font: inherit;
+  font-size: .9375rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: .35rem 1rem;
+  cursor: pointer;
+}
+.theme-toggle:hover { border-color: var(--ink); }
+
+/* ---------- Layout ---------- */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 4rem) 3rem;
+}
+.hero { padding: clamp(1.5rem, 6vw, 4rem) 0 2rem; }
+.hero h1 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(4rem, 17vw, 9rem);
+  line-height: .9;
+  letter-spacing: -0.04em;
+}
+.lede { max-width: 34rem; margin: 1.5rem 0 0; color: var(--muted); }
+
+/* ---------- Game cards ---------- */
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1.25rem;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .15s ease, border-color .15s ease;
+}
+a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+.thumb {
+  aspect-ratio: 16 / 9;
+  background: var(--accent);
+  color: var(--on-accent);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 4rem;
+}
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.card-body { display: flex; flex-direction: column; gap: .5rem; padding: 1.25rem; flex: 1; }
+.card-meta { color: var(--muted); font-size: .875rem; text-transform: uppercase; letter-spacing: .06em; }
+.card-title { margin: 0; font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; line-height: 1.15; }
+.card-text { margin: 0; color: var(--muted); flex: 1; }
+.card-go { margin-top: .5rem; font-weight: 500; color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+
+/* Entries that cannot be played online */
+.card.static { border-style: dashed; }
+.card.static .thumb { background: var(--line); color: var(--muted); }
+.card.static .card-go { color: var(--muted); text-decoration: none; }
+
+.path-notice {
+  padding: .75rem 1rem;
+  border: 1.5px dashed var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: .9375rem;
+}
+
+/* ---------- Footer ---------- */
+.foot {
+  padding: 1.5rem clamp(1.25rem, 5vw, 4rem);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .9375rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card { transition: none; }
+  a.card:hover { transform: none; }
+}
