@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TODO: Replace the title and description with your own -->
+  <title>Dante P. Luglio | Home</title>
+  <meta name="description" content="Class work, professional site, and a browser game by Dante P. Luglio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#destinations">Skip to links</a>
+
+  <header class="top">
+    <span class="mark">Dante P. Luglio</span> <!-- TODO: your name -->
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch color theme">Dark mode</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Pick a door.</h1>
+      <p class="lede">
+        This is the front page for everything I build. Browse my coursework,
+        see my professional site, or play the game I made.
+        <!-- TODO: rewrite this intro in your own words -->
+      </p>
+    </section>
+
+    <nav id="destinations" class="destinations" aria-label="Site sections">
+
+      <!-- ============================================================
+           1) PERSONAL / PROFESSIONAL SITE
+           TODO: set href to the folder or page, e.g. "your-folder/"
+           or "your-folder/index.html"
+           ============================================================ -->
+      <a class="door door-pro" href="https://web.njit.edu/~dpl6/Personal%20Website/" data-label="Professional site">
+        <span class="door-title">About me</span>
+        <span class="door-text">My professional site: background, skills, résumé, and how to reach me.</span>
+        <span class="door-go">Visit site</span>
+      </a>
+
+      <!-- ============================================================
+           2) CLASS ASSIGNMENTS AND WEB PAGE PROJECTS
+           TODO: set href to your class work folder, e.g. "your-folder/"
+           (Want separate links per class? Copy this whole <a> block.)
+           ============================================================ -->
+      <a class="door door-class" href="https://web.njit.edu/~dpl6/IT202%20Homepage/" data-label="Class work">
+        <span class="door-title">Class work</span>
+        <span class="door-text">Assignments and web page projects, in the order I built them.</span>
+        <span class="door-go">Open the folder</span>
+      </a>
+
+      <!-- ============================================================
+           3) BROWSER GAME
+           TODO: set href to the game folder or page, e.g. "your-folder/"
+           ============================================================ -->
+      <a class="door door-game" href="https://web.njit.edu/~dpl6/Game/" data-label="Browser game">
+        <span class="door-title">Play the game</span>
+        <span class="door-text">A simple browser game. No download, no sign-up.</span>
+        <span class="door-go">Start playing</span>
+      </a>
+
+    </nav>
+
+    <p id="path-notice" class="path-notice" role="status" hidden></p>
+  </main>
+
+  <footer class="foot">
+    <span>&copy; <span id="year">2026</span> Dante P. Luglio</span> <!-- TODO: your name -->
+    <!-- TODO (optional): add an email or social link here -->
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

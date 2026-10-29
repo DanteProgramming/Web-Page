@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dante Luglio | IT &amp; Game Programming</title>
+<meta name="description" content="Portfolio of Dante Luglio, NJIT Information Technology student with a Game Programming minor and Air Force ROTC cadet.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+  ============================================================
+  HOW TO ADD YOUR PICTURES
+  ============================================================
+  Search this file for:   PICTURE LINK GOES HERE
+  Each one sits directly above an <img src="">.
+  Paste your image path or URL between the quotes of src="".
+
+    Local file : src="images/headshot.jpg"   (put the file in an "images" folder)
+    Web link   : src="https://example.com/my-photo.jpg"
+
+  While src="" is empty, the page shows a framed empty slot.
+  There are 8 picture slots in total:
+    1. Hero headshot          5. ROTC photo
+    2. About photo            6. Gallery photo 1
+    3. Quake project image    7. Gallery photo 2
+    4. Raspberry Pi image     8. Gallery photo 3
+  ============================================================
+-->
+
+<header class="site-header">
+  <a class="brand" href="#top">Dante Luglio</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" class="nav">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Dante Luglio</h1>
+      <p class="lead">I modify game engines, build AI tools, and study the networks they run on.</p>
+      <p>Information Technology student at NJIT with a Game Programming minor, and a contracted Air Force ROTC cadet. Looking for a software engineering internship for Summer 2027.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <!-- RESUME FILE: keep Dante_Luglio_Resume.docx in the same folder as this page, or change the filename here -->
+        <a class="btn" href="Dante_Luglio_Resume.docx" download>Download resume</a>
+      </div>
+    </div>
+
+    <!-- PICTURE SLOT 1: HEADSHOT -->
+    <figure class="photo portrait" data-label="Add your headshot">
+      <!-- ===== PICTURE LINK GOES HERE (headshot) ===== -->
+      <img src="" alt="Portrait of Dante Luglio">
+    </figure>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section split">
+    <div>
+      <h2>About me</h2>
+      <p>I am a sophomore at the New Jersey Institute of Technology studying Information Technology with a minor in Game Programming. I learn fastest by building, whether that means changing how a classic game engine behaves or getting a language model to talk through a Raspberry Pi.</p>
+      <p>Working inside large codebases has taught me to read code I did not write and change it without breaking what already works. My coursework in Data Structures, Network Security, AI, and Databases gives me the foundation to keep growing.</p>
+      <p>Outside the classroom, I am a contracted cadet in Air Force ROTC, where I train to lead and follow through under pressure.</p>
+    </div>
+
+    <!-- PICTURE SLOT 2: ABOUT PHOTO -->
+    <figure class="photo landscape" data-label="Add an about photo">
+      <!-- ===== PICTURE LINK GOES HERE (about photo) ===== -->
+      <img src="" alt="Dante working or at NJIT">
+    </figure>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="cards">
+
+      <article class="card">
+        <!-- PICTURE SLOT 3: QUAKE PROJECT -->
+        <figure class="photo landscape" data-label="Add a Quake screenshot">
+          <!-- ===== PICTURE LINK GOES HERE (Quake project screenshot) ===== -->
+          <img src="" alt="Screenshot of the modified Quake game">
+        </figure>
+        <h3>Quake 2 &amp; Quake 4 engine modifications</h3>
+        <p class="meta">May 2026 &nbsp;|&nbsp; Game Programming courses IT 201 &amp; IT 266</p>
+        <ul>
+          <li>Modified the Quake 2 and Quake 4 source code in C and C++ to build custom versions of each game.</li>
+          <li>Turned Quake 2 into a medieval-themed simulator and Quake 4 into a custom party-style game.</li>
+          <li>Learned engine architecture, large-codebase navigation, and version control with Git and GitHub.</li>
+        </ul>
+        <ul class="tags"><li>C</li><li>C++</li><li>C#</li><li>GitHub</li></ul>
+        <!-- ===== PROJECT LINK GOES HERE (replace the # with your GitHub repo or demo link) ===== -->
+        <a class="link" href="#">View on GitHub</a>
+      </article>
+
+      <article class="card">
+        <!-- PICTURE SLOT 4: RASPBERRY PI PROJECT -->
+        <figure class="photo landscape" data-label="Add a Raspberry Pi photo">
+          <!-- ===== PICTURE LINK GOES HERE (Raspberry Pi assistant photo) ===== -->
+          <img src="" alt="Raspberry Pi AI voice assistant setup">
+        </figure>
+        <h3>Raspberry Pi AI voice assistant</h3>
+        <p class="meta">June 2026 &nbsp;|&nbsp; Personal project</p>
+        <ul>
+          <li>Built an AI assistant on a Raspberry Pi 4B that takes spoken input and answers with a local language model run through Ollama.</li>
+          <li>Wrote the scripts that connect speech input, the language model, and the device hardware end to end.</li>
+        </ul>
+        <ul class="tags"><li>Linux</li><li>Scripting</li><li>JavaScript</li><li>Ollama</li></ul>
+        <!-- ===== PROJECT LINK GOES HERE (replace the # with your GitHub repo or demo link) ===== -->
+        <a class="link" href="#">View on GitHub</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <h2>Skills and education</h2>
+    <div class="skills">
+      <div>
+        <h3>Languages</h3>
+        <ul class="tags"><li>Python</li><li>Java</li><li>C</li><li>C++</li><li>C#</li><li>JavaScript</li><li>SQL</li><li>HTML/CSS</li></ul>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <ul class="tags"><li>Git/GitHub</li><li>VS Code</li><li>Visual Studio</li><li>Unity</li><li>Wireshark</li><li>Cisco</li><li>Ollama</li></ul>
+      </div>
+      <div>
+        <h3>Platforms</h3>
+        <ul class="tags"><li>Linux (Kali)</li><li>Windows</li><li>Raspberry Pi</li></ul>
+      </div>
+      <div>
+        <h3>Education</h3>
+        <p><strong>New Jersey Institute of Technology</strong><br>B.S. in Information Technology, minor in Game Programming<br>Sep. 2025 to May 2029</p>
+        <p class="small">Coursework: Data Structures, Network Security, Artificial Intelligence, Software Methodology, Database Management, Game Programming</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership" class="section split">
+    <div>
+      <h2>Leadership</h2>
+      <h3>Air Force ROTC, Det 490</h3>
+      <p class="meta">Contracted Cadet &nbsp;|&nbsp; Sep. 2025 to present</p>
+      <ul>
+        <li>Develop leadership skills in high-pressure environments.</li>
+        <li>Practice drill and marching to reinforce attention to detail.</li>
+        <li>Meet demanding Air Force physical training standards.</li>
+      </ul>
+    </div>
+
+    <!-- PICTURE SLOT 5: ROTC PHOTO -->
+    <figure class="photo landscape" data-label="Add an ROTC photo">
+      <!-- ===== PICTURE LINK GOES HERE (ROTC photo) ===== -->
+      <img src="" alt="Dante at an Air Force ROTC event">
+    </figure>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <h2>Gallery</h2>
+    <div class="gallery">
+
+      <!-- PICTURE SLOT 6: GALLERY 1 -->
+      <figure class="photo square" data-label="Add photo 1">
+        <!-- ===== PICTURE LINK GOES HERE (gallery photo 1) ===== -->
+        <img src="" alt="Gallery photo 1">
+      </figure>
+
+      <!-- PICTURE SLOT 7: GALLERY 2 -->
+      <figure class="photo square" data-label="Add photo 2">
+        <!-- ===== PICTURE LINK GOES HERE (gallery photo 2) ===== -->
+        <img src="" alt="Gallery photo 2">
+      </figure>
+
+      <!-- PICTURE SLOT 8: GALLERY 3 -->
+      <figure class="photo square" data-label="Add photo 3">
+        <!-- ===== PICTURE LINK GOES HERE (gallery photo 3) ===== -->
+        <img src="" alt="Gallery photo 3">
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <h2>Contact</h2>
+    <p>I am looking for a Summer 2027 software engineering internship. Email is the fastest way to reach me.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:blaze91797@gmail.com">blaze91797@gmail.com</a>
+      <a class="btn" href="https://github.com/DanteProgramming" target="_blank" rel="noopener">GitHub</a>
+      <!-- ===== LINKEDIN LINK GOES HERE (replace the # with your LinkedIn profile URL) ===== -->
+      <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year">2026</span> Dante Luglio</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

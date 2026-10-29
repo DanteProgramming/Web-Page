@@ -1,0 +1,201 @@
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #e9eef3;
+  --surface: #ffffff;
+  --ink: #12213a;
+  --muted: #4a5a73;
+  --line: #c3cfdc;
+  --pro: #2447d6;      /* professional site */
+  --class: #0f7a6b;    /* class work */
+  --game: #d4452e;     /* game */
+  --focus: #12213a;
+  --font-head: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --bg: #101a2c;
+  --surface: #182540;
+  --ink: #e8eef8;
+  --muted: #a9b7cd;
+  --line: #2c3d5e;
+  --pro: #7f9bff;
+  --class: #4cc9b3;
+  --game: #ff8a70;
+  --focus: #e8eef8;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--surface);
+  padding: .5rem 1rem;
+}
+.skip:focus { left: 1rem; top: 1rem; z-index: 10; }
+
+/* ---------- Header ---------- */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem clamp(1.25rem, 5vw, 4rem);
+}
+
+.mark {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.theme-toggle {
+  font: inherit;
+  font-size: .9375rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: .35rem 1rem;
+  cursor: pointer;
+}
+.theme-toggle:hover { border-color: var(--ink); }
+
+/* ---------- Hero ---------- */
+main {
+  flex: 1;
+  padding: 0 clamp(1.25rem, 5vw, 4rem) 3rem;
+  max-width: 78rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero { padding: clamp(2rem, 8vw, 6rem) 0 clamp(1.5rem, 4vw, 3rem); }
+
+.hero h1 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(3.5rem, 13vw, 10rem);
+  line-height: .92;
+  letter-spacing: -0.04em;
+}
+
+.lede {
+  max-width: 34rem;
+  margin: 1.75rem 0 0;
+  color: var(--muted);
+  font-size: 1.1875rem;
+}
+
+/* ---------- Destination links ---------- */
+.destinations {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-areas:
+    "game pro"
+    "game class";
+  gap: 1.25rem;
+}
+
+.door {
+  --accent: var(--pro);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: .5rem;
+  padding: 1.75rem;
+  min-height: 11rem;
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  border: 1.5px solid var(--line);
+  border-left: 8px solid var(--accent);
+  border-radius: 6px;
+  transition: transform .15s ease, border-color .15s ease;
+}
+
+.door:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+.door-pro   { --accent: var(--pro);   grid-area: pro; }
+.door-class { --accent: var(--class); grid-area: class; }
+.door-game  { --accent: var(--game);  grid-area: game; min-height: 24rem; }
+
+.door-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+.door-game .door-title { font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -0.02em; }
+
+.door-text { color: var(--muted); max-width: 26rem; }
+
+.door-go {
+  margin-top: .5rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Link has no path yet (set by script.js) */
+.door.unset {
+  border-style: dashed;
+  cursor: not-allowed;
+}
+.door.unset .door-go { color: var(--muted); text-decoration: line-through; }
+
+.path-notice {
+  margin: 1.5rem 0 0;
+  padding: .75rem 1rem;
+  border: 1.5px dashed var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: .9375rem;
+}
+
+/* ---------- Footer ---------- */
+.foot {
+  padding: 1.5rem clamp(1.25rem, 5vw, 4rem);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .9375rem;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 760px) {
+  .destinations {
+    grid-template-columns: 1fr;
+    grid-template-areas: "game" "pro" "class";
+  }
+  .door-game { min-height: 16rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .door { transition: none; }
+  .door:hover { transform: none; }
+}
