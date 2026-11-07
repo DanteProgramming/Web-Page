@@ -195,28 +195,44 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .blob { animation: none; }
   html { scroll-behavior: auto; }
   .door { transition: none; }
   .door:hover { transform: none; }
 }
 
 /* ================= Flare ================= */
-:root { --mx: 50vw; --my: 30vh; }
-
-/* dotted grid + a soft glow that follows the cursor */
-body {
+/* animated background: soft drifting color blobs + a dotted grid that fades at the edges */
+.bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   background-image: radial-gradient(var(--line) 1px, transparent 1px);
   background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 15%, transparent 78%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 15%, transparent 78%);
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(420px circle at var(--mx) var(--my),
-    color-mix(in srgb, var(--game) 22%, transparent), transparent 70%);
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .28;
+  animation: drift 24s ease-in-out infinite alternate;
 }
+.b1 { width: 46vmax; height: 46vmax; left: -12vmax; top: -14vmax; background: var(--game); }
+.b2 { width: 42vmax; height: 42vmax; right: -14vmax; top: 18vh; background: var(--pro); animation-duration: 30s; animation-delay: -8s; }
+.b3 { width: 40vmax; height: 40vmax; left: 22vw; bottom: -22vmax; background: var(--class); animation-duration: 27s; animation-delay: -14s; }
+:root[data-theme="dark"] .blob { opacity: .2; }
+@keyframes drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(6vw, 4vh) scale(1.12); }
+  100% { transform: translate(-4vw, 8vh) scale(.95); }
+}
+
+/* mouse trail canvas (drawn by script.js) */
+.trail { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
 .top, main, .foot { position: relative; z-index: 1; }
 
 /* ruffle headline (letters are split by script.js) */
@@ -245,7 +261,7 @@ body::before {
     color-mix(in srgb, var(--accent) 24%, transparent), transparent 70%);
 }
 .door:hover::after, .door:focus-visible::after { opacity: 1; }
-.door-go::after { content: " \2192"; display: inline-block; transition: transform .2s; }
+.door-go::after { content: "\2192"; display: inline-block; margin-left: .4em; transition: transform .2s; }
 .door:hover .door-go::after, .door:focus-visible .door-go::after { transform: translateX(6px); }
 
 /* entrance: doors rise in one after another (class added by script.js) */
