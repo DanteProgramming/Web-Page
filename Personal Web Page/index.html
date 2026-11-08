@@ -7,22 +7,29 @@
   <title>Dante P. Luglio | Home</title>
   <meta name="description" content="Class work, professional site, and a browser game by Dante P. Luglio.">
 
+  <meta name="theme-color" content="#101a2c">
+  <meta property="og:title" content="Dante P. Luglio">
+  <meta property="og:description" content="Class work, a professional site, and a browser game.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='22' y='8' width='56' height='84' rx='8' fill='%23d4452e'/%3E%3Ccircle cx='65' cy='52' r='6' fill='%23fff'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
+  <div class="bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+
   <a class="skip" href="#destinations">Skip to links</a>
 
   <header class="top">
     <span class="mark">Dante P. Luglio</span> <!-- TODO: your name -->
-    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch color theme">Dark mode</button>
+    <div class="controls"><button id="motion-toggle" class="theme-toggle" type="button" aria-label="Turn animations on or off">Motion: on</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch color theme">Dark mode</button></div>
   </header>
 
   <main>
     <section class="hero">
       <h1>Pick a door.</h1>
+      <p class="kicker">Dante builds <span id="rotator" class="rotator">websites.</span><span class="caret" aria-hidden="true"></span></p>
       <p class="lede">
         This is the front page for everything I build. Browse my coursework,
         see my professional site, or play the game I made.
@@ -39,6 +46,7 @@
            or "your-folder/index.html"
            ============================================================ -->
       <a class="door door-pro" href="https://web.njit.edu/~dpl6/Professional%20Website/" data-label="Professional site">
+        <span class="door-tag">02 / Professional</span>
         <span class="door-title">About me</span>
         <span class="door-text">My professional site: background, skills, résumé, and how to reach me.</span>
         <span class="door-go">Visit site</span>
@@ -50,6 +58,7 @@
            (Want separate links per class? Copy this whole <a> block.)
            ============================================================ -->
       <a class="door door-class" href="https://web.njit.edu/~dpl6/IT202%20Homepage/" data-label="Class work">
+        <span class="door-tag">03 / Coursework</span>
         <span class="door-title">Class work</span>
         <span class="door-text">Assignments and web page projects, in the order I built them.</span>
         <span class="door-go">Open the folder</span>
@@ -60,6 +69,7 @@
            TODO: set href to the game folder or page, e.g. "your-folder/"
            ============================================================ -->
       <a class="door door-game" href="https://web.njit.edu/~dpl6/Game/" data-label="Browser game">
+        <span class="door-tag">01 / Play</span>
         <span class="door-title">Play the game</span>
         <span class="door-text">A simple browser game. No download, no sign-up.</span>
         <span class="door-go">Start playing</span>
@@ -72,9 +82,9 @@
 
   <footer class="foot">
     <span>&copy; <span id="year">2026</span> Dante P. Luglio</span> <!-- TODO: your name -->
-    <!-- TODO (optional): add an email or social link here -->
+    <span class="foot-links"><a href="mailto:blaze91797@gmail.com">Email</a><a href="https://github.com/DanteProgramming" target="_blank" rel="noopener">GitHub</a></span>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
