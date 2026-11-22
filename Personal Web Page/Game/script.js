@@ -32,11 +32,20 @@ var GAMES = [
   */
 
   {
-    title: "RAB Expansion 5",
-    year: "",
+    title: "RAB 1.0",
+    year: "2026",
     tag: "Unity",
     text: "My first ever game, built in Unity.",
-    url: "https://play.unity.com/en/games/ea7eb452-038c-42e7-b180-357cf4d5e557/rab-expansion-5",
+    url: "https://play.unity.com/en/games/bf800f28-3330-4508-b458-41edafe5a6b7/project-1-assignment-4",
+    image: "",
+    playable: true
+  },
+  {
+    title: "Hunting.Beta.1.0",
+    year: "2026-2027",
+    tag: "Unity",
+    text: "Final Unity Project IT 201.",
+    url: "https://play.unity.com/en/games/bf800f28-3330-4508-b458-41edafe5a6b7/project-1-assignment-4",
     image: "",
     playable: true
   }
