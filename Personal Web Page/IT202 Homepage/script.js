@@ -1,302 +1,167 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    /* ==========================================================
+       1. LIGHT & DARK MODE TOGGLE WITH RIPPLE ANIMATION
+       ========================================================== */
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const ripple = document.getElementById('theme-ripple');
 
-// Gallery data - You can add more items here
+    // Load saved theme if available
+    const savedTheme = localStorage.getItem('dante-woodworking-theme');
+    if (savedTheme) {
+        htmlElement.setAttribute('data-theme', savedTheme);
+    }
 
-const galleryItems = [
+    themeToggle.addEventListener('click', (e) => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-{
+        // Position ripple at the center of the toggle button
+        const rect = themeToggle.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
 
-image: 'gallery1.jpg',
+        ripple.style.left = `${centerX}px`;
+        ripple.style.top = `${centerY}px`;
 
-description: 'Handcrafted Dining Table'
+        // Restart ripple animation
+        ripple.classList.remove('animate');
+        void ripple.offsetWidth; // Trigger reflow
+        ripple.classList.add('animate');
 
-},
+        // Switch theme mid-animation
+        htmlElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('dante-woodworking-theme', nextTheme);
+    });
 
-{
 
-image: 'gallery2.jpg',
+    /* ==========================================================
+       2. DYNAMIC WOOD-GRAIN & SAWDUST CANVAS BACKGROUND
+       ========================================================== */
+    const canvas = document.getElementById('dynamic-bg');
+    const ctx = canvas.getContext('2d');
 
-description: 'Vintage Wooden Bookshelf'
+    let width, height;
+    let mouse = { x: -1000, y: -1000 };
+    let time = 0;
 
-},
+    function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
 
-{
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-image: 'gallery3.jpg',
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
 
-description: 'Custom Coffee Table'
+    // Floating sawdust particles
+    const particles = Array.from({ length: 35 }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 2.5 + 0.8,
+        speedX: (Math.random() - 0.5) * 0.35,
+        speedY: Math.random() * -0.4 - 0.1
+    }));
 
-},
+    function getThemeColors() {
+        const styles = getComputedStyle(document.documentElement);
+        return {
+            grain: styles.getPropertyValue('--grain-color').trim(),
+            particle: styles.getPropertyValue('--particle-color').trim()
+        };
+    }
 
-{
+    function animateBackground() {
+        ctx.clearRect(0, 0, width, height);
+        const colors = getThemeColors();
+        time += 0.008;
 
-image: 'gallery4.jpg',
+        // Draw organic flowing wood-grain contours
+        ctx.strokeStyle = colors.grain;
+        ctx.lineWidth = 1.25;
 
-description: 'Wooden Bed Frame'
+        const lineCount = 22;
+        const spacing = height / (lineCount - 4);
 
-},
+        for (let i = -2; i < lineCount; i++) {
+            ctx.beginPath();
+            const baseY = i * spacing;
 
-{
+            for (let x = 0; x <= width; x += 25) {
+                // Organic wave math simulating wood grain rings
+                const wave1 = Math.sin(x * 0.003 + time + i * 0.45) * 28;
+                const wave2 = Math.cos(x * 0.007 - time * 0.7 + i) * 12;
 
-image: 'gallery5.jpg',
+                // Subtle interactive bend near mouse cursor
+                const dx = x - mouse.x;
+                const dy = baseY - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const mouseBend = dist < 240 ? (1 - dist / 240) * 35 : 0;
 
-description: 'Artisan Wooden Chair'
+                const y = baseY + wave1 + wave2 + mouseBend;
 
-},
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+        }
 
-{
+        // Draw drifting sawdust motes
+        ctx.fillStyle = colors.particle;
+        particles.forEach((p) => {
+            p.x += p.speedX + Math.sin(time + p.y * 0.01) * 0.2;
+            p.y += p.speedY;
 
-image: 'gallery6.jpg',
+            // Wrap around screen edges
+            if (p.y < -10) p.y = height + 10;
+            if (p.x < -10) p.x = width + 10;
+            if (p.x > width + 10) p.x = -10;
 
-description: 'Decorative Wall Shelf'
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+        });
 
-},
+        requestAnimationFrame(animateBackground);
+    }
 
-{
+    animateBackground();
 
-image: 'gallery7.jpg',
 
-description: 'Custom Cabinet'
+    /* ==========================================================
+       3. IMAGE LIGHTBOX (CLICK ANY PHOTO TO ENLARGE)
+       ========================================================== */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.querySelector('.lightbox-close');
 
-},
+    document.querySelectorAll('main img').forEach((img) => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = img.alt || '';
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+        });
+    });
 
-{
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+    }
 
-image: 'gallery8.jpg',
-
-description: 'Hand-carved Wooden Bowl'
-
-}
-
-];
-
-// Function to populate gallery
-
-function populateGallery() {
-
-const galleryGrid = document.getElementById('gallery-grid');
-
-galleryItems.forEach(item => {
-
-const galleryItem = document.createElement('div');
-
-galleryItem.className = 'gallery-item';
-
-galleryItem.innerHTML =
-
-<img src="
-i
-t
-e
-m
-.
-i
-m
-a
-g
-e
-"
-a
-l
-t
-=
-"
-item.image"alt="{item.description}" class="gallery-image" onerror="this.src='placeholder-image.jpg'">
-
-<div class="gallery-description">${item.description}</div>
-
-;
-
-galleryGrid.appendChild(galleryItem);
-
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
 });
-
-}
-
-// Initialize gallery
-
-populateGallery();
-
-// Smooth scrolling for navigation links
-
-document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
-
-anchor.addEventListener('click', function (e) {
-
-e.preventDefault();
-
-const target = document.querySelector(this.getAttribute('href'));
-
-if (target) {
-
-window.scrollTo({
-
-top: target.offsetTop - 80,
-
-behavior: 'smooth'
-
-});
-
-}
-
-});
-
-});
-
-// Add scroll animation to sections
-
-const sections = document.querySelectorAll('section');
-
-const observerOptions = {
-
-root: null,
-
-rootMargin: '0px',
-
-threshold: 0.1
-
-};
-
-const observer = new IntersectionObserver((entries) => {
-
-entries.forEach(entry => {
-
-if (entry.isIntersecting) {
-
-entry.target.style.opacity = 1;
-
-entry.target.style.transform = 'translateY(0)';
-
-}
-
-});
-
-}, observerOptions);
-
-sections.forEach(section => {
-
-section.style.opacity = 0;
-
-section.style.transform = 'translateY(20px)';
-
-section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-
-observer.observe(section);
-
-});
-
-// Add hover effect to workshop image
-
-const workshopImage = document.getElementById('workshop-image');
-
-if (workshopImage) {
-
-workshopImage.addEventListener('mouseenter', function() {
-
-this.style.transform = 'scale(1.02)';
-
-});
-
-workshopImage.addEventListener('mouseleave', function() {
-
-this.style.transform = 'scale(1)';
-
-});
-
-}
-
-// Add click effect to gallery items
-
-const galleryItemsElements = document.querySelectorAll('.gallery-item');
-
-galleryItemsElements.forEach(item => {
-
-item.addEventListener('click', function() {
-
-this.style.transform = 'scale(0.95)';
-
-setTimeout(() => {
-
-this.style.transform = '';
-
-}, 200);
-
-});
-
-});
-
-// Add animation to header on page load
-
-const header = document.querySelector('header');
-
-if (header) {
-
-header.style.opacity = 0;
-
-header.style.transform = 'translateY(-20px)';
-
-setTimeout(() => {
-
-header.style.transition = 'opacity 1s ease, transform 1s ease';
-
-header.style.opacity = 1;
-
-header.style.transform = 'translateY(0)';
-
-}, 100);
-
-}
-
-// Add keyboard navigation support
-
-document.addEventListener('keydown', function(e) {
-
-if (e.key === 'Escape') {
-
-// Close any open modals or reset animations
-
-document.querySelectorAll('.gallery-item').forEach(item => {
-
-item.style.transform = '';
-
-});
-
-}
-
-});
-
-// Responsive behavior for small screens
-
-function handleResize() {
-
-const galleryGrid = document.getElementById('gallery-grid');
-
-if (window.innerWidth < 768) {
-
-galleryGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(200px, 1fr))';
-
-} else {
-
-galleryGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(250px, 1fr))';
-
-}
-
-}
-
-// Initial resize handling
-
-handleResize();
-
-// Add event listener for window resize
-
-window.addEventListener('resize', handleResize);
-
-// Simulate loading delay for better UX
-
-setTimeout(() => {
-
-document.body.style.opacity = 1;
-
-}, 300);
-
-});")]

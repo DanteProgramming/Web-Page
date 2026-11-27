@@ -1,101 +1,259 @@
-[create_document(title="woodworking-homepage.html", content="<!DOCTYPE html>
-
-<html lang=\"en\">
-
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-
-<meta charset=\"UTF-8\">
-
-<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-
-<title>My Woodworking Creations</title>
-
-<link rel=\"stylesheet\" href=\"styles.css\">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dante P. Luglio | Custom Woodworking & Fine Furniture</title>
+    <!-- Google Fonts for an editorial, craftsman feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
+    <!-- Dynamic Wood-Grain & Sawdust Canvas Background -->
+    <canvas id="dynamic-bg"></canvas>
 
-<h1>My Woodworking Creations</h1>
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="container nav-container">
+            
+            <!-- =========================================================
+                 EDIT HERE: HOMEPAGE LINK
+                 Replace "#" with your actual homepage URL (e.g., "index.html" or "https://danteluglio.com")
+                 ========================================================= -->
+            <a href="#" class="home-btn" title="Return to Home Page">
+                <svg class="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Home</span>
+            </a>
 
-<nav>
+            <div class="brand-title">Dante P. Luglio</div>
 
-<ul>
+            <!-- Custom Artisan Light/Dark Mode Toggle -->
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Light and Dark Mode">
+                <span class="toggle-track">
+                    <!-- Sun / Brass Chisel Emblem (Light Mode) -->
+                    <span class="icon-wrapper sun-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <!-- Moon / Wood Shaving Emblem (Dark Mode) -->
+                    <span class="icon-wrapper moon-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                    <span class="toggle-thumb"></span>
+                </span>
+            </button>
+        </div>
+    </header>
 
-<li>Workshop</li>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero container">
+            <div class="hero-content">
+                <p class="eyebrow">Bespoke Joinery & Fine Furniture</p>
+                <h1>Dante P. Luglio</h1>
+                <p class="hero-bio">
+                    Crafting heirloom-quality furniture and architectural woodwork from sustainably sourced hardwoods. Every joint is cut with precision, honoring the natural grain and character of the timber.
+                </p>
+                <div class="hero-links">
+                    <a href="#projects" class="btn-primary">View Selected Works</a>
+                    <a href="#workspace" class="btn-secondary">Explore the Shop</a>
+                </div>
+            </div>
 
-<li>Gallery</li>
+            <div class="hero-image-frame">
+                <!-- =========================================================
+                     EDIT HERE: HERO FEATURE IMAGE
+                     Replace the 'src' with your main showcase photo (e.g., "images/hero-table.jpg")
+                     ========================================================= -->
+                <img src="https://placehold.co/800x950/8b5a2b/ffffff?text=Hero+Showcase+Photo" alt="Signature woodworking piece by Dante P. Luglio">
+                <span class="photo-caption">Fig 01. — Signature Walnut Dining Table</span>
+            </div>
+        </section>
 
-<li>About</li>
+        <!-- Section 1: Selected Projects Gallery -->
+        <section id="projects" class="section container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Selected Projects</h2>
+                <p>Custom commissions, hand-cut joinery, and finished pieces.</p>
+            </div>
 
-<li>Contact</li>
+            <div class="projects-grid">
+                <!-- Project Card 1 (Large Featured) -->
+                <article class="project-card featured">
+                    <div class="img-container">
+                        <!-- EDIT HERE: PROJECT 1 IMAGE -->
+                        <img src="https://placehold.co/900x600/6b4423/ffffff?text=Project+01+Image" alt="Project 1">
+                    </div>
+                    <div class="card-meta">
+                        <h3>Live-Edge Black Walnut Slab Table</h3>
+                        <p>Hand-planed finish with bowtie inlays and blackened steel base.</p>
+                    </div>
+                </article>
 
-</ul>
+                <!-- Project Card 2 -->
+                <article class="project-card">
+                    <div class="img-container">
+                        <!-- EDIT HERE: PROJECT 2 IMAGE -->
+                        <img src="https://placehold.co/600x600/7c502b/ffffff?text=Project+02+Image" alt="Project 2">
+                    </div>
+                    <div class="card-meta">
+                        <h3>White Oak Credenza</h3>
+                        <p>Sliding tambour doors and dovetailed drawers.</p>
+                    </div>
+                </article>
 
-</nav>
+                <!-- Project Card 3 -->
+                <article class="project-card">
+                    <div class="img-container">
+                        <!-- EDIT HERE: PROJECT 3 IMAGE -->
+                        <img src="https://placehold.co/600x600/5a381e/ffffff?text=Project+03+Image" alt="Project 3">
+                    </div>
+                    <div class="card-meta">
+                        <h3>Cherry & Ash Lounger</h3>
+                        <p>Steam-bent backrest with mortise and tenon joinery.</p>
+                    </div>
+                </article>
 
-</header>
+                <!-- Project Card 4 -->
+                <article class="project-card">
+                    <div class="img-container">
+                        <!-- EDIT HERE: PROJECT 4 IMAGE -->
+                        <img src="https://placehold.co/600x600/8b5a2b/ffffff?text=Project+04+Image" alt="Project 4">
+                    </div>
+                    <div class="card-meta">
+                        <h3>Dovetailed Keepsake Boxes</h3>
+                        <p>Figured maple with hand-rubbed oil and beeswax finish.</p>
+                    </div>
+                </article>
 
-<main>
+                <!-- Project Card 5 -->
+                <article class="project-card">
+                    <div class="img-container">
+                        <!-- EDIT HERE: PROJECT 5 IMAGE -->
+                        <img src="https://placehold.co/600x600/4a2e18/ffffff?text=Project+05+Image" alt="Project 5">
+                    </div>
+                    <div class="card-meta">
+                        <h3>Custom Built-In Bookshelves</h3>
+                        <p>Floor-to-ceiling cabinetry tailored for a home library.</p>
+                    </div>
+                </article>
 
-<section id=\"workshop\">
+                <!-- Project Card 6 (Wide) -->
+                <article class="project-card wide">
+                    <div class="img-container">
+                        <!-- EDIT HERE: PROJECT 6 IMAGE -->
+                        <img src="https://placehold.co/900x550/6b4423/ffffff?text=Project+06+Image" alt="Project 6">
+                    </div>
+                    <div class="card-meta">
+                        <h3>End-Grain Butcher Block Island</h3>
+                        <p>Hard rock maple and purpleheart geometric pattern.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-<h2>Our Workshop</h2>
+        <!-- Section 2: The Workspace -->
+        <section id="workspace" class="section container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>The Workspace</h2>
+                <p>Inside the shop—where raw lumber becomes functional art.</p>
+            </div>
 
-<div class=\"workshop-container\">
+            <div class="workspace-bento">
+                <!-- Workspace Photo 1 (Main Wide Shot) -->
+                <div class="shop-item shop-main">
+                    <!-- EDIT HERE: WORKSPACE PHOTO 1 -->
+                    <img src="https://placehold.co/1000x650/5c3a21/ffffff?text=Main+Shop+Floor+Photo" alt="Overview of Dante's woodworking shop">
+                    <div class="shop-overlay">
+                        <h4>The Main Floor</h4>
+                        <p>Outfeed tables, milling station, and lumber racks.</p>
+                    </div>
+                </div>
 
-<img src=\"workshop-image.jpg\" alt=\"Woodworking Workshop\" id=\"workshop-image\">
+                <!-- Workspace Photo 2 -->
+                <div class="shop-item">
+                    <!-- EDIT HERE: WORKSPACE PHOTO 2 -->
+                    <img src="https://placehold.co/600x600/73492a/ffffff?text=Hand+Tools+%26+Chisels" alt="Hand tools and chisels on wall">
+                    <div class="shop-overlay">
+                        <h4>Hand Tool Wall</h4>
+                        <p>Japanese pull saws, planes, and mortise chisels.</p>
+                    </div>
+                </div>
 
-<p>Welcome to our woodworking studio where we create beautiful and functional wooden pieces with passion and precision.</p>
+                <!-- Workspace Photo 3 -->
+                <div class="shop-item">
+                    <!-- EDIT HERE: WORKSPACE PHOTO 3 -->
+                    <img src="https://placehold.co/600x600/472c18/ffffff?text=Workbench+Detail" alt="Roubo workbench detail">
+                    <div class="shop-overlay">
+                        <h4>The Roubo Bench</h4>
+                        <p>Heavy maple slab bench built for hand-planing.</p>
+                    </div>
+                </div>
 
-</div>
+                <!-- Workspace Photo 4 -->
+                <div class="shop-item shop-wide">
+                    <!-- EDIT HERE: WORKSPACE PHOTO 4 -->
+                    <img src="https://placehold.co/1000x500/825330/ffffff?text=Lumber+Storage+%26+In-Progress+Builds" alt="Kiln dried lumber stack">
+                    <div class="shop-overlay">
+                        <h4>Lumber Rack & Drying Stock</h4>
+                        <p>Locally harvested walnut, white oak, and cherry slabs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-</section>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+                <h3>Dante P. Luglio</h3>
+                <p>Custom Woodworking & Fine Furniture</p>
+            </div>
+            
+            <!-- =========================================================
+                 EDIT HERE: SECOND HOMEPAGE LINK (FOOTER)
+                 Replace "#" with your actual homepage URL
+                 ========================================================= -->
+            <a href="#" class="home-btn">
+                <svg class="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </footer>
 
-<section id=\"gallery\">
+    <!-- Lightbox Modal for Viewing Images Full-Size -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Close image">&times;</button>
+        <img id="lightbox-img" src="" alt="Expanded view">
+        <p id="lightbox-caption"></p>
+    </div>
 
-<h2>Gallery</h2>
+    <!-- Theme Transition Ripple Overlay -->
+    <div id="theme-ripple" class="theme-ripple"></div>
 
-<div class=\"gallery-grid\" id=\"gallery-grid\">
-
-<!-- Gallery items will be added by JavaScript -->
-
-</div>
-
-</section>
-
-<section id=\"about\">
-
-<h2>About Me</h2>
-
-<p>I'm a passionate woodworker with over 15 years of experience creating beautiful and functional wooden pieces. My work combines traditional techniques with modern design to create timeless furniture and décor.</p>
-
-</section>
-
-<section id=\"contact\">
-
-<h2>Contact Me</h2>
-
-<p>Get in touch to commission a piece or for inquiries about my work.</p>
-
-<p>Email: info@woodworkingcreations.com</p>
-
-<p>Phone: (555) 123-4567</p>
-
-</section>
-
-</main>
-
-<footer>
-
-<p>&copy; 2026 My Woodworking Creations. All rights reserved.</p>
-
-</footer>
-
-<script src=\"script.js\"></script>
-
+    <script src="script.js"></script>
 </body>
-
-</html>")]
+</html>
