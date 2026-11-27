@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!-- Changed data-theme to "dark" so the site starts in Dark Mode -->
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,6 +75,7 @@
                 <div class="hero-links">
                     <a href="#projects" class="btn-primary">View Selected Works</a>
                     <a href="#workspace" class="btn-secondary">Explore the Shop</a>
+                    <a href="#contact" class="btn-secondary">Contact</a>
                 </div>
             </div>
 
@@ -217,6 +219,35 @@
                         <h4>Lumber Rack & Drying Stock</h4>
                         <p>Locally harvested walnut, white oak, and cherry slabs.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Contact / Email -->
+        <section id="contact" class="section container">
+            <div class="contact-card">
+                <div class="contact-info">
+                    <span class="section-number">03</span>
+                    <h2>Commissions & Inquiries</h2>
+                    <p>Interested in a custom piece, collaboration, or have a question about a build? Reach out directly via email.</p>
+                </div>
+
+                <div class="contact-actions">
+                    <!-- =========================================================
+                         EDIT HERE: YOUR EMAIL ADDRESS
+                         Replace "dante@example.com" in BOTH the href="mailto:..." AND the text below!
+                         ========================================================= -->
+                    <a id="email-link" href="mailto:dante@example.com" class="email-display">
+                        <svg class="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span id="email-text">dante@example.com</span>
+                    </a>
+
+                    <button id="copy-email-btn" class="btn-secondary copy-btn" type="button">
+                        Copy Email
+                    </button>
                 </div>
             </div>
         </section>

@@ -17,7 +17,7 @@
 }
 
 [data-theme="dark"] {
-    /* Dark Mode: Smoked Walnut, Charcoal & Copper */
+    /* Dark Mode: Smoked Walnut, Charcoal & Copper (Default) */
     --bg-color: #16120f;
     --surface-color: #211b17;
     --surface-border: #362c25;
@@ -275,21 +275,24 @@ h1, h2, h3, .brand-title {
 .hero-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 14px;
 }
 
 .btn-primary, .btn-secondary {
-    padding: 13px 26px;
+    padding: 13px 24px;
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
     transition: all 0.25s ease;
 }
 
 .btn-primary {
     background-color: var(--accent-color);
     color: #ffffff;
+    border: 1px solid var(--accent-color);
 }
 
 .btn-primary:hover {
@@ -384,10 +387,7 @@ h1, h2, h3, .brand-title {
     border-color: var(--accent-color);
 }
 
-.project-card.featured {
-    grid-column: span 2;
-}
-
+.project-card.featured,
 .project-card.wide {
     grid-column: span 2;
 }
@@ -486,6 +486,70 @@ h1, h2, h3, .brand-title {
 }
 
 /* =========================================
+   CONTACT / EMAIL SECTION
+   ========================================= */
+.contact-card {
+    background: var(--surface-color);
+    border: 1px solid var(--surface-border);
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.contact-info {
+    max-width: 540px;
+}
+
+.contact-info h2 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    margin: 4px 0 10px;
+}
+
+.contact-info p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+}
+
+.email-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    background: var(--bg-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.25s ease;
+}
+
+.email-display:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.icon-mail {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* =========================================
    FOOTER
    ========================================= */
 .site-footer {
@@ -576,5 +640,8 @@ h1, h2, h3, .brand-title {
     .shop-item.shop-wide {
         grid-column: span 1;
         height: 300px;
+    }
+    .contact-card {
+        padding: 32px 24px;
     }
 }

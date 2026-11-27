@@ -1,20 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================
-       1. LIGHT & DARK MODE TOGGLE WITH RIPPLE ANIMATION
+       1. LIGHT & DARK MODE TOGGLE (DEFAULTS TO DARK MODE)
        ========================================================== */
     const themeToggle = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
     const ripple = document.getElementById('theme-ripple');
 
-    // Load saved theme if available
-    const savedTheme = localStorage.getItem('dante-woodworking-theme');
-    if (savedTheme) {
-        htmlElement.setAttribute('data-theme', savedTheme);
-    }
+    // Load saved theme if visitor previously toggled it; otherwise stay in 'dark'
+    const savedTheme = localStorage.getItem('dante-woodworking-theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
 
-    themeToggle.addEventListener('click', (e) => {
+    themeToggle.addEventListener('click', () => {
         const currentTheme = htmlElement.getAttribute('data-theme');
-        const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
         // Position ripple at the center of the toggle button
         const rect = themeToggle.getBoundingClientRect();
@@ -36,7 +34,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================
-       2. DYNAMIC WOOD-GRAIN & SAWDUST CANVAS BACKGROUND
+       2. COPY EMAIL BUTTON FUNCTIONALITY
+       ========================================================== */
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    const emailText = document.getElementById('email-text');
+
+    if (copyEmailBtn && emailText) {
+        copyEmailBtn.addEventListener('click', () => {
+            const email = emailText.textContent.trim();
+            navigator.clipboard.writeText(email).then(() => {
+                const originalText = copyEmailBtn.textContent;
+                copyEmailBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyEmailBtn.textContent = originalText;
+                }, 2000);
+            });
+        });
+    }
+
+
+    /* ==========================================================
+       3. DYNAMIC WOOD-GRAIN & SAWDUST CANVAS BACKGROUND
        ========================================================== */
     const canvas = document.getElementById('dynamic-bg');
     const ctx = canvas.getContext('2d');
@@ -92,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const baseY = i * spacing;
 
             for (let x = 0; x <= width; x += 25) {
-                // Organic wave math simulating wood grain rings
                 const wave1 = Math.sin(x * 0.003 + time + i * 0.45) * 28;
                 const wave2 = Math.cos(x * 0.007 - time * 0.7 + i) * 12;
 
@@ -136,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================
-       3. IMAGE LIGHTBOX (CLICK ANY PHOTO TO ENLARGE)
+       4. IMAGE LIGHTBOX (CLICK ANY PHOTO TO ENLARGE)
        ========================================================== */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
